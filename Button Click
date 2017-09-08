@@ -1,0 +1,47 @@
+Private Sub cmadd_Click()
+Dim iRow As Long
+Dim ws As Worksheet
+Set ws = Worksheets("IND_SUB_Case_Grid")
+'find first empty row in database
+iRow = ws.Cells.Find(What:="*", SearchOrder:=xlRows, _
+SearchDirection:=xlPrevious, LookIn:=xlValues).Row + 1
+
+'check for an incident number
+If Trim(Me.txtCaseNum.Value) = "" Then
+Me.txtCaseNum.SetFocus
+MsgBox "Please Enter a Case Number"
+Exit Sub
+End If
+
+'copy the data to the database
+'use protect and unprotect lines,
+'with your password
+'if worksheet is protected
+With ws
+'.Unprotect Password: = "password"
+.Cells(iRow, 1).Value = Me.txtDetDate.Value
+.Cells(iRow, 2).Value = Me.txtIncDate.Value
+.Cells(iRow, 3).Value = Me.txtCaseNum.Value
+.Cells(iRow, 4).Value = Me.cboAssign.Value
+.Cells(iRow, 5).Value = Me.cboProg.Value
+.Cells(iRow, 6).Value = Me.txtnar.Value
+.Cells(iRow, 7).Value = Me.txtalleg.Value
+.Cells(iRow, 8).Value = Me.txtcap.Value
+.Cells(iRow, 9).Value = Me.txtactions.Value
+' .Protect Password:="password"
+End With
+
+'clear the data
+
+Me.txtDetDate.Value = ""
+Me.txtIncDate.Value = ""
+Me.txtCaseNum.Value = ""
+Me.cboAssign.Value = ""
+Me.cboProg.Value = ""
+Me.txtnar.Value = ""
+Me.txtalleg.Value = ""
+Me.txtcap.Value = ""
+Me.txtactions.Value = ""
+Me.txtCaseNum.SetFocus
+
+End Sub
