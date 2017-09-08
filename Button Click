@@ -48,3 +48,11 @@ End Sub
 Private Sub cmdClose_Click()
 Unload Me
 End Sub
+
+Private Sub UserForm_QueryClose(Cancel As Integer, CloseMode As Integer)
+'Prevent user from closing the form with the x botton
+If CloseMode = vbFormControlMenu Then
+Cancel = True
+MsgBox "Please Use the Close Form Button!"
+End If
+End Sub
