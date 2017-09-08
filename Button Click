@@ -43,5 +43,8 @@ Me.txtalleg.Value = ""
 Me.txtcap.Value = ""
 Me.txtactions.Value = ""
 Me.txtCaseNum.SetFocus
+End Sub
 
+Private Sub cmdClose_Click()
+Unload Me
 End Sub
