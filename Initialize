@@ -1,0 +1,22 @@
+Private Sub UserForm_Initialize()
+'To add combo box lists
+Dim cProg As Range
+Dim ws As Worksheet
+Set ws = Worksheets("Validation Sheet")
+
+For Each cProg In ws.Range("ProgramList")
+With Me.cboProg
+.AddItem cProg.Value
+End With
+Next cProg
+
+For Each cAssign In ws.Range("AssignmentList")
+With Me.cboAssign
+.AddItem cAssign.Value
+End With
+Next cAssign
+
+End Sub
+
+
+
